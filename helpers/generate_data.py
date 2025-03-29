@@ -25,7 +25,5 @@ def generate_last_name():
 # Функция для нахождения средней длины строки в First Name
 def get_name_to_delete(names:list[str]) -> str:
     avg_len = sum(map(len, names)) / len(names)
-    sorted_names = sorted(names, key=lambda i: abs(avg_len - len(i)), reverse=True)
-    return sorted_names.pop()
-
-
+    name = min(names, key=lambda name: abs(avg_len - len(name)))
+    return name

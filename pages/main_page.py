@@ -21,19 +21,41 @@ class SearchHelper(BasePage):
         search_field.send_keys(word)
         return search_field
 
+    # Метод для считывания имен First Name из таблицы
+    def get_names(self, locator):
+        names = []
 
-    def get_customers_del_btns(self, locator):
-        customers_del_btns = {}
+        rows = len(self.find_elements((locator[0], f'{locator[1]}')))
 
+        for r in range(1, rows + 1):
+            first_name = self.find_element((locator[0], f'{locator[1]}[{r}]/td[{1}]')).text
+            names.append(first_name)
+
+        return names
+
+    # Метод для поиска кнопки Delete для удаления клиента
+    def get_button_delete(self, locator, name):
         rows = len(self.find_elements((locator[0], f'{locator[1]}')))
         columns = len(self.find_elements((locator[0], f'{locator[1]}[1]/td')))
 
         for r in range(1, rows + 1):
             first_name = self.find_element((locator[0], f'{locator[1]}[{r}]/td[{1}]')).text
-            delete_btn = self.find_element((locator[0], f'{locator[1]}[{r}]/td[{columns}]/button'))
-            customers_del_btns[first_name] = delete_btn
+            if first_name == name:
+                button_delete = self.find_element((locator[0], f'{locator[1]}[{r}]/td[{columns}]/button'))
+                return button_delete
 
-        return customers_del_btns
+    # def get_customers_del_btns(self, locator):
+    #     customers_del_btns = {}
+    #
+    #     rows = len(self.find_elements((locator[0], f'{locator[1]}')))
+    #     columns = len(self.find_elements((locator[0], f'{locator[1]}[1]/td')))
+    #
+    #     for r in range(1, rows + 1):
+    #         first_name = self.find_element((locator[0], f'{locator[1]}[{r}]/td[{1}]')).text
+    #         delete_btn = self.find_element((locator[0], f'{locator[1]}[{r}]/td[{columns}]/button'))
+    #         customers_del_btns[first_name] = delete_btn
+    #
+    #     return customers_del_btns
 
 
 

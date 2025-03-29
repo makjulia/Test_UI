@@ -52,13 +52,17 @@ class TestsCases:
     @allure.feature("Test Cases")
     @allure.story("Удаление клиента")
     @allure.step("Шаги")
-    def test_deletecustomers(self, browser):
+    def test_delete_customers(self, browser):
         main_page = SearchHelper(browser)
+
         with allure.step("Шаг - Клик по кнопке Customers"):
             main_page.click_element(SeacrhLocators.LOCATOR_BUTTON_CUSTOMERS)
-        customers_del_btns = main_page.get_customers_del_btns(SeacrhLocators.LOCATOR_TABLE)
-        name_to_delete = get_name_to_delete(customers_del_btns.keys())
-        with allure.step("Шаг - Клик по кнопке Delete"):
-            customers_del_btns[name_to_delete].click()
 
-        assert name_to_delete not in main_page.get_customers_del_btns(SeacrhLocators.LOCATOR_TABLE)
+        customers_names = main_page.get_names(SeacrhLocators.LOCATOR_TABLE)
+        name_to_delete = get_name_to_delete(customers_names)
+        button_delete = main_page.get_button_delete(SeacrhLocators.LOCATOR_TABLE, name_to_delete)
+
+        with allure.step("Шаг - Клик по кнопке Delete"):
+            button_delete.click()
+
+        assert name_to_delete not in main_page.get_names(SeacrhLocators.LOCATOR_TABLE)
