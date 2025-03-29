@@ -1,7 +1,7 @@
-import pytest
-from selenium import webdriver
 import time
 
+import pytest
+from selenium import webdriver
 
 
 @pytest.fixture(scope="session", autouse=True)

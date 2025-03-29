@@ -1,5 +1,6 @@
-from faker import Faker
 import random
+
+from faker import Faker
 
 
 # Функция для генерации данных для поля Post Code

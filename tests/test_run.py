@@ -1,9 +1,10 @@
-from helpers.generate_data import (generate_string_for_post_code,generate_string_for_first_name, generate_last_name,
-                                   get_name_to_delete)
-from pages.main_page import SearchHelper, SeacrhLocators
-from re import  match
+from re import match
+
 import allure
 
+from helpers.generate_data import (generate_string_for_post_code, generate_string_for_first_name, generate_last_name,
+                                   get_name_to_delete)
+from pages.main_page import SearchHelper, SeacrhLocators
 
 
 @allure.epic("Task_UI")

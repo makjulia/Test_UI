@@ -1,5 +1,6 @@
-from helpers.base_page import BasePage
 from selenium.webdriver.common.by import By
+
+from helpers.base_page import BasePage
 
 
 class SeacrhLocators:
