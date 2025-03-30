@@ -65,5 +65,5 @@ jobs:
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
       - name: Deploy to Github Pages
-        ig: deployment
+        id: deployment
         uses: actions/deploy-pages@v3
