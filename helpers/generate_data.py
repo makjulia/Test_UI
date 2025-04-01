@@ -2,13 +2,12 @@ import random
 
 from faker import Faker
 
-
-# Функция для генерации данных для поля Post Code
+"""Функция для генерации данных для поля Post Code"""
 def generate_string_for_post_code():
-    return ''.join([str(random.randint(0, 9)) for _ in range(10)])
+    return " ".join([str(random.randint(0, 9)) for _ in range(10)])
 
 
-# Функция для генерации данных для поля First Name
+"""Функция для генерации данных для поля First Name"""
 def generate_string_for_first_name(postcode):
     numwords = {num: letter for num, letter in
                 enumerate("abcdefghijklmnopqrstuvwxyz")}
@@ -17,13 +16,13 @@ def generate_string_for_first_name(postcode):
     return firstname
 
 
-# Функция для генерации данных для поля Last Name
+"""Функция для генерации данных для поля Last Name"""
 def generate_last_name():
     fake = Faker("ru_RU")
     last_name = fake.last_name()
     return last_name
 
-# Функция для нахождения средней длины строки в First Name
+"""Функция для нахождения средней длины строки в First Name"""
 def get_name_to_delete(names:list[str]) -> str:
     avg_len = sum(map(len, names)) / len(names)
     name = min(names, key=lambda name: abs(avg_len - len(name)))
