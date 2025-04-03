@@ -11,7 +11,7 @@ from helpers.api.api_helper import ServiceApi
 def browser():
    print("\nstart browser for test..")
    options = Options()
-   options.add_argument("--headless")
+   # options.add_argument("--headless")
    browser = webdriver.Chrome(options=options)
    yield browser
    print("\nquit browser..")
