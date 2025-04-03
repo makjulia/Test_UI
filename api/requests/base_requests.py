@@ -1,7 +1,5 @@
 import requests
 
-
-
 class BaseApi:
 
     def request_post(self, **kwargs):

@@ -11,7 +11,8 @@ class ServiceApi(BaseApi):
 
     def method_post(self, data):
         post_url = self.base_url + Routes.POST_OBJ
-        self.request_post(url=post_url, json=data)
+        return self.request_post(url=post_url, json=data).json()
+
 
     def method_get(self, id):
         get_url = self.base_url + Routes.GET_OBJ.format(id)
@@ -19,7 +20,7 @@ class ServiceApi(BaseApi):
 
     def method_delete(self, id):
         delete_url = self.base_url + Routes.DELETE_OBJ.format(id)
-        self.request_delete(url=delete_url)
+        return self.request_delete(url=delete_url)
 
     def method_get_all(self):
         get_all_url = self.base_url + Routes.GET_ALL_OBJ
@@ -27,4 +28,4 @@ class ServiceApi(BaseApi):
 
     def method_patch(self, id, data):
         patch_url = self.base_url + Routes.PATCH_OBJ.format(id)
-        self.request_patch(url=patch_url, json=data)
+        return self.request_patch(url=patch_url, json=data)
