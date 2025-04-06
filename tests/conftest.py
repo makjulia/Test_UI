@@ -4,6 +4,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from helpers.api.api_data_generate import generate_all_data
 from helpers.api.api_helper import ServiceApi
 
 
@@ -24,3 +25,12 @@ def service():
    service = ServiceApi()
    yield service
    print("\nfinish api test..")
+
+@pytest.fixture(scope="session")
+def obj_id(service):
+   obj = generate_all_data().model_dump()
+   response_id = service.method_post(obj)
+   yield response_id
+   service.method_delete(response_id)
+
+

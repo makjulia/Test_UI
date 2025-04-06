@@ -47,3 +47,19 @@ def generate_all_data():
     }
     all_model = MainModel(**all_data)
     return all_model
+
+def generate_all_data_from_response(response: dict):
+    all_data = {
+        "addition": AdditionModel(**response["addition"]),
+        "important_numbers": response["important_numbers"],
+        "title": response["title"],
+        "verified": response["verified"]
+    }
+    all_model = MainModel(**all_data)
+    return all_model
+
+def update_all_data(all_data: MainModel, new_elem: dict):
+    new_addit = all_data.addition.model_copy(update=new_elem)
+    new_elem["addition"] = new_addit
+    new_all_data = all_data.model_copy(update=new_elem)
+    return new_all_data

@@ -7,8 +7,8 @@ from helpers.ui.generate_data import (generate_string_for_post_code, generate_st
 from pages.main_page import SearchHelper, SearchLocators
 
 
-@allure.epic("Task_UI")
-@allure.feature("Test Cases")
+@allure.epic("Tests")
+@allure.feature("UI Test Cases")
 class TestsCases:
     @allure.story("Создание клиента Add Customer")
     @allure.step("Шаги")
