@@ -1,6 +1,7 @@
 import allure
 
-from helpers.api.api_data_generate import generate_all_data, generate_all_data_from_response, update_all_data
+from helpers.api.api_data_generate import generate_all_data, generate_all_data_from_response, update_all_data, \
+    data_for_update
 
 
 @allure.epic("Tests")
@@ -37,7 +38,7 @@ class TestApi:
         with allure.step("Шаг - Составление тела запроса с новыми дополнениями"):
             obj = service.method_get(obj_id).json()
             data = generate_all_data_from_response(obj)
-            new_data = update_all_data(data, {"title": "Россия"})
+            new_data = update_all_data(data, data_for_update())
         with allure.step("Шаг - Вызов метода PATCH"):
             response = service.method_patch(obj_id, new_data.model_dump())
         response_get = generate_all_data_from_response(service.method_get(obj_id).json())

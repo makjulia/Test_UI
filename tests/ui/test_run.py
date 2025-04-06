@@ -37,8 +37,7 @@ class TestsCases:
         assert bool(match(r"Customer added successfully", msg))
         alert.accept()
 
-    @allure.epic("Task_UI")
-    @allure.feature("Test Cases")
+
     @allure.story("Сортировка клиентов по имени First Name")
     @allure.step("Шаги")
     def test_sort_customers(self, browser):
@@ -49,8 +48,7 @@ class TestsCases:
         with allure.step("Шаг - Клик по ссылке First Name"):
             main_page.click_element(SearchLocators.LOCATOR_SORT_FIRST_NAME)
 
-    @allure.epic("Task_UI")
-    @allure.feature("Test Cases")
+
     @allure.story("Удаление клиента")
     @allure.step("Шаги")
     def test_delete_customers(self, browser):
