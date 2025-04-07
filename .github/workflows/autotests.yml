@@ -13,6 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clone repository
+        run: git clone https://github.com/bondarenkokate73/simbirsoft_sdet_project.git
+      - name: Install Docker
+        uses: docker/setup-docker-action@v4
+      - name: Activate service
+        run: cd simbirsoft_sdet_project && docker-compose up --build -d
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: setup Python
@@ -23,8 +29,8 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests
-        run: pytest tests/ui/test_run.py --alluredir reports
+      - name: Run  tests
+        run: pytest --alluredir reports
       - name: Store allure reports
         uses: actions/upload-artifact@v4
         with:
